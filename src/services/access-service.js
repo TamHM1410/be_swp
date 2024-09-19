@@ -5,7 +5,7 @@ const users = require("../models/user-model");
 const asyncHandler = require("express-async-handler");
 const { check } = require("express-validator");
 const { createToken } = require("../auths/createToken");
-
+const {checkPassword}=require("../utils/index")
 class Access {
   static register = asyncHandler(async (req, res) => {
     const checkExist = await users.findOne({
@@ -41,13 +41,16 @@ class Access {
       return new ConflictRequestError("Not found user", 404, undefined).send(
         res
       );
-    let checkpass = bcrypt.compareSync(req.body?.password, user?.password);
-    // const token = await createToken({ findUser });
-    // console.log(token);
+    return checkPassword(req.body?.password,user?.password) === true
+    ? new Success("login success", await createToken({ user })).send(res)
+    : new ConflictRequestError("Wrong password").send(res);
+    // let checkpass = bcrypt.compareSync(req.body?.password, user?.password);
+    // // const token = await createToken({ findUser });
+    // // console.log(token);
 
-    return checkpass === true
-      ? new Success("login success", await createToken({ user })).send(res)
-      : new ConflictRequestError("Wrong password").send(res);
+    // return checkpass === true
+    //   ? new Success("login success", await createToken({ user })).send(res)
+    //   : new ConflictRequestError("Wrong password").send(res);
   });
 }
 

@@ -14,7 +14,8 @@ var paymentMethodSchema =new mongoose.Schema({
 
 
 },{
-    timestamps:true
+    timestamps:true,
+    collection:'PaymentMethods'
 })
 
-module.exports=mongoose.model('PaymentMethod',paymentMethodSchema)
+module.exports=mongoose.model('PaymentMethods',paymentMethodSchema)

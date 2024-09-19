@@ -10,13 +10,19 @@ var userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  phoneNumber:{
+    type:String,
+    default:null
+  },
   email: {
     type: String,
+    default:null
+
   },
   password: {
     type: String,
     required: true,
-    select:false
+    
   },
   role: {
     type: Number,
@@ -34,6 +40,11 @@ var userSchema = new mongoose.Schema({
     type:String,
     default:null,
     
+  },
+  cart_id:{
+    type:mongoose.Types.ObjectId,
+    ref:'Carts',
+    default:null
   }
 },{
   timestamps:true,
@@ -41,4 +52,4 @@ var userSchema = new mongoose.Schema({
 });
 
 //Export the model
-module.exports = mongoose.model("User", userSchema);
+module.exports = mongoose.model("Users", userSchema);
