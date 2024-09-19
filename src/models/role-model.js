@@ -22,7 +22,7 @@ var roleSchema = new mongoose.Schema({
     },
 },{
     timestamps:true,
-    collection:'roles'
+    collection:'Roles'
 });
 
 //Export the model

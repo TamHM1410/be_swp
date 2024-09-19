@@ -2,7 +2,7 @@ const mongoose = require("mongoose"); // Erase if already required
 const { default: slugify } = require("slugify");
 const slug=require('slugify')
 
-const COLLECTION_NAME="Products"
+const COLLECTION_NAME="Product"
 
 const DOCUMENT_NAME="Product"
 
