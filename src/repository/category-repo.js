@@ -8,13 +8,13 @@ const getAllCategory=async  (limit,skip,)=>{
 
 }
 const updateCategory=async (data,id)=>{
-    const data= await categoryModel.findByIdAndUpdate(id,data,{
+    const dataNew= await categoryModel.findByIdAndUpdate(id,data,{
         new:true
     })
     if(data.length ==0){
         new BadRequestError('Not found')
     }
-    return data
+    return dataNew
     
     
 }

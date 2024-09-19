@@ -8,13 +8,14 @@ const subCategory=require('./sub-category-routes')
 
 var predictVersionUrl="/api/v1"
 const webApi = (app) => {
-  app.use(predictVersionUrl, auth);
-  app.use(predictVersionUrl, product);
-  app.use(predictVersionUrl,password),
-  app.use(predictVersionUrl,user)
-  app.use(predictVersionUrl,paymentMethod)
-  app.use(predictVersionUrl,category)
-  app.use(predictVersionUrl,subCategory)
+  app.use("/api/v1", auth);
+  // app.use(predictVersionUrl, product);
+  // app.use(predictVersionUrl,password),
+  // app.use(predictVersionUrl,user)
+  // app.use(predictVersionUrl,paymentMethod)
+  // app.use(predictVersionUrl,category)
+  // app.use(predictVersionUrl,subCategory)
+
 
 };
 
