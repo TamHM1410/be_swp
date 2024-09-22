@@ -84,9 +84,10 @@ class Clothes extends Product {
     let newClothes = await clothes.create(this.product_attribute);
 
     if (!newClothes) throw new BadRequestError();
-    let newProduct = await this.create_product(newClothes._id);
+    let newProduct = await this.create_product();
+    console.log('this is new product',newProduct)
 
-    console.log(newClothes._id,newProduct)
+ 
 
     return newProduct;
   });

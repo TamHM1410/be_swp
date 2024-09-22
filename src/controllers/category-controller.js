@@ -4,6 +4,7 @@ const { Success } = require('../core/success.response')
 class CategoryController{
     static createNewCate=asyncHandler(async(req,res)=>{
         const data=req.body
+       
         new Success('Created',await cateService.createNewCategory(data)).send(res)
     })
     static findAllCate=asyncHandler(async()=>{

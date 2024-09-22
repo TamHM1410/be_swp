@@ -36,6 +36,16 @@ const paths={
         GETBYID:'/subcategories/:id',
         DELETE:'/subcategories/:id',
         UPDATE:'/subcategories/:id'
+    },
+    INVENTORY:{
+        GET:'/inventories',
+        CREATE:'/inventories',
+        GETBYID:'/inventories/:id',
+        DELETE:'/inventories/:id',
+        UPDATE:'/subcategories/:id'
+    },
+    PRODUCTS:{
+        POST:'/products'
     }
     
 }

@@ -1,6 +1,7 @@
 const { BadRequestError } = require('../core/error.response')
 const categoryModel=require('../models/category-model')
 const createNewCategory=async(data)=>{
+    console.log('data',data)
     return  await categoryModel.create(data)
 }
 const getAllCategory=async  (limit,skip,)=>{
