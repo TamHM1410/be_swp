@@ -8,14 +8,14 @@ class AccessController {
 
   static register = asyncHandler(async (req, res) => {
     // console.log(req.body)
-    const validate = validationResult(req);
-    if (!validate.isEmpty()) {
-      return new ConflictRequestError(
-        "Validation error",
-        undefined,
-        validate.array()
-      ).send(res);
-    }
+    // const validate = validationResult(req);
+    // if (!validate.isEmpty()) {
+    //   return new ConflictRequestError(
+    //     "Validation error",
+    //     undefined,
+    //     validate.array()
+    //   ).send(res);
+    // }
 
     await access.register(req, res);
   });

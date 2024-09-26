@@ -12,7 +12,7 @@ const findAllProduct = async ({ limit, skip, sort }) => {
     .exec();
 };
 
-const findAllDraft = async ({ query, limit, skip }) => {
+const findAllDraft = async ({ query}) => {
   
   return products.find(query);
 };

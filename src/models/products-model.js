@@ -9,7 +9,7 @@ var productsSchema = new mongoose.Schema(
     product_description: { type: String },
     product_image: {
       type: Array,
-      default: [""],
+      default: ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSePykPxV7hbiMoufhNrCVlkEh94nvJQIMDeA&s"],
     },
     product_slug: { type: String },
     product_stock: {
@@ -51,6 +51,13 @@ var productsSchema = new mongoose.Schema(
     },
     product_manufacter:{
         type:String
+    },
+    product_price:{
+         type:Number,
+         default:0
+    },
+    isSale:{
+      type:String
     }
   },
   {

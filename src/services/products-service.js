@@ -1,8 +1,14 @@
 const asyncHandler=require('express-async-handler')
 const {
     createNewProduct,
-    createMainBoard
+    createMainBoard,
+    findProducts,updateProduct,
+    getProductById,
+    getProductBySlug
 }=require('../Repository/product-repo')
+
+const {  removeUndefinedObject,
+    updateNestedObjectParser,} =require('../utils/index')
 const { BadRequestError } = require('../core/error.response')
 class ProductService{
     static create_new_product=asyncHandler(async(type,payload)=>{
@@ -11,6 +17,24 @@ class ProductService{
                         
 
         }
+    })
+
+    static findAllProduct=asyncHandler(async(skip,limit)=>{
+        return await findProducts(skip,limit)
+
+
+    })
+    static findProductById=asyncHandler(async(id)=>{
+        return  await getProductById(id)
+    })
+    static updateProductById=asyncHandler(async(payload)=>{
+        return  await updateProduct(payload)
+         
+
+
+    })
+    static getProductSlug=asyncHandler(async(slug)=>{
+        return await getProductBySlug(slug)
     })
 
 }
@@ -30,7 +54,10 @@ class Products{
         product_rating,
         product_comment,
         pruduct_warranty,
-        product_manufacter
+        product_manufacter,
+        product_price,
+        product_image
+     
 
 
 
@@ -48,6 +75,8 @@ class Products{
         this.product_manufacter=product_manufacter
         this.product_rating=product_rating
         this.product_comment=product_comment
+        this.product_price=product_price
+        this.product_image=product_image
 
 
 
@@ -57,6 +86,14 @@ class Products{
         return await createNewProduct(this)
 
     })
+    // update_product=asyncHandler(async()=>{
+    //     let obj =removeUndefinedObject(this)
+    //     if(obj.product_technical_specification){
+
+    //     }
+
+
+    // })
 
 }
 

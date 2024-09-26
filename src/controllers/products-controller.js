@@ -7,6 +7,31 @@ class ProductController{
         let payload=req.body
         new Success(undefined,await product_service.create_new_product(type,payload)).send(res)
     })
+    static getAllProduct=asyncHandler(async(req,res)=>{
+        let skip=req.query.skip || 0
+        let limit=req.query.limit || 10
+
+        new Success(undefined,await product_service.findAllProduct(skip,limit)).send(res)
+    })
+    static updateProduct=asyncHandler(async(req,res)=>{
+        let payload=req.body
+        new Success(undefined,await product_service.updateProductById(payload)).send(res)
+
+    })
+    static findProductById=asyncHandler(async(req,res)=>{
+        let id=req.params.id
+        new Success(undefined,await product_service.findProductById(id)).send(res)
+
+    })
+    // static getProductBySlug=asyncHandler(async(req,res)=>{
+        // let slug=req.params.slug
+        // new Success(undefined,await product_service.getProductSlug(slug)).send(res)
+    // })
+    static findBySlug=asyncHandler(async(req,res)=>{
+        let slug=req.params.slug
+        new Success(undefined,await product_service.getProductSlug(slug)).send(res)
+
+    })
 
 }
 

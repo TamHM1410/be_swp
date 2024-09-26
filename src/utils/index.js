@@ -39,8 +39,6 @@ const updateNestedObjectParser = (object) => {
 const checkPassword = async (input_password, password) => {
   console.log(input_password,password)
   let check_pass = await bcrypt.compareSync(input_password, password);
-  // const token = await createToken({ findUser });
-  // console.log(token);
 
   return check_pass;
 };

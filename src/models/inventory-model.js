@@ -2,13 +2,17 @@ const mongoose=require('mongoose')
 
 const inventorySchema=new mongoose.Schema({
     inven_stock:{
-        type:Number
+        type:Number,
+        min:[0,"Minimum quantity is 0"],
+        max:[100,"Max ximum"],
+        default:10
     },
     product_id:{
         type:mongoose.Types.ObjectId,
         ref:'Products',
         default:null
     },
+  
     status:{
         type:Number
     }

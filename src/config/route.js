@@ -45,7 +45,12 @@ const paths={
         UPDATE:'/subcategories/:id'
     },
     PRODUCTS:{
-        POST:'/products'
+        POST:'/products',
+        GET:'/products',
+        GETBYID:"/products/:id",
+        DELETE:"/products/:id",
+        UPDATE:"/products/:id",
+        GETBYSLUG:"/products/slug/:slug"
     }
     
 }
