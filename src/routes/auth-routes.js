@@ -6,7 +6,7 @@ const {paths}=require('../config/route')
 
 authRouter.post(paths.ACCESS.REGISTER, validatedRegister, AccessController.register);
 
-authRouter.post(paths.ACCESS.LOGIN, validateLogin, AccessController.login);
+authRouter.post(paths.ACCESS.LOGIN, AccessController.login);
 
 authRouter.post("/", (req, res) => {
   console.log(req.body);

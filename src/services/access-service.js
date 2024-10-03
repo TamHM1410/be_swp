@@ -28,7 +28,7 @@ class Access {
       userName: req.body?.userName,
       password: hashpassword,
     });
-    return new Created("Ok", newData).send(res);
+    return new Created("ok", newData).send(res);
   });
 
   //////Login
@@ -41,8 +41,9 @@ class Access {
       return new ConflictRequestError("Not found user", 404, undefined).send(
         res
       );
-    return checkPassword(req.body?.password,user?.password) === true
-    ? new Success("login success", await createToken({ user })).send(res)
+      
+    return await checkPassword(req.body?.password,user?.password) === true
+    ? new Success("ok", await createToken({ user })).send(res)
     : new ConflictRequestError("Wrong password").send(res);
     // let checkpass = bcrypt.compareSync(req.body?.password, user?.password);
     // // const token = await createToken({ findUser });

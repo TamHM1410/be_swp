@@ -21,7 +21,13 @@ const createNewProduct = async (payload) => {
 };
 
 const findProducts = async (skip, limit) => {
-  return await products_model.find().skip(skip).limit(limit).lean().exec();
+  const totalProducts = await products_model.countDocuments();
+
+ const products =await products_model.find().skip(skip).limit(limit).lean().exec();
+ return {
+   totalProducts:totalProducts,
+   products:products
+ }
 };
 
 const getProductById=async(id)=>{

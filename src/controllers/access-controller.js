@@ -8,22 +8,6 @@ class AccessController {
 
   static register = asyncHandler(async (req, res) => {
     // console.log(req.body)
-    // const validate = validationResult(req);
-    // if (!validate.isEmpty()) {
-    //   return new ConflictRequestError(
-    //     "Validation error",
-    //     undefined,
-    //     validate.array()
-    //   ).send(res);
-    // }
-
-    await access.register(req, res);
-  });
-
-  ////login
-
-  static login = asyncHandler(async (req, res) => {
-    console.log(req.body);
     const validate = validationResult(req);
     if (!validate.isEmpty()) {
       return new ConflictRequestError(
@@ -32,6 +16,22 @@ class AccessController {
         validate.array()
       ).send(res);
     }
+
+    await access.register(req, res);
+  });
+
+  ////login
+
+  static login = asyncHandler(async (req, res) => {
+  
+    const validate = validationResult(req);
+    // if (!validate.isEmpty()) {
+    //   return new ConflictRequestError(
+    //     "Validation error",
+    //     undefined,
+    //     validate.array()
+    //   ).send(res);
+    // }
 
     await access.login(req, res);
   });
