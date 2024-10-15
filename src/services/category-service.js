@@ -1,5 +1,5 @@
 const asyncHandler=require('express-async-handler')
-const {    createNewCategory,getAllCategory,updateCategory,deleteCategory,    findOneById}=require('../repository/category-repo')
+const {    createNewCategory,getAllCategory,updateCategory,deleteCategory,    findOneById}=require('../Repository/category-repo')
 
 
 class CategoryService{

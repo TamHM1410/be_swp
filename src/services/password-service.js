@@ -3,7 +3,7 @@ const { SuccessResponse, Success } = require('../core/success.response');
 
 const user=require('../models/user-model')
 
-const {changePasswordQuery}=require('../repository/password-repo')
+const {changePasswordQuery}=require('../Repository/password-repo')
 const asyncHandler = require("express-async-handler");
 
 

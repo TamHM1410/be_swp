@@ -4,7 +4,7 @@ const {
     createSubCate,
     updateSubCate,
     deleteById
-}=require('../repository/sub-category-repo')
+}=require('../Repository/sub-category-repo')
 const asyncHandler=require('express-async-handler')
 class SubCateService{
     static findAll=asyncHandler(async()=>{

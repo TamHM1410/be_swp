@@ -1,4 +1,4 @@
-const {getAllUser,updateUserById,findUserById}=require('../repository/user-repo')
+const {getAllUser,updateUserById,findUserById}=require('../Repository/user-repo')
 const asyncHandler=require('express-async-handler')
 class UserService{
     static findAllUser =asyncHandler(async(limit, skip, sort)=>{

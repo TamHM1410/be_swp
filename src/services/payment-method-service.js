@@ -2,7 +2,7 @@ const {findAllPaymentMethod,
     findPaymentMethodById,
     createNewPaymentMethod,
     updatePaymentMethod,
-    deletePaymentMethod}=require('../repository/payment-method-repo')
+    deletePaymentMethod}=require('../Repository/payment-method-repo')
 const asyncHandler=require('express-async-handler')
 class PaymentMethodService{
     static findALl=asyncHandler(async()=>{
