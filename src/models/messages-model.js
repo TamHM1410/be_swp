@@ -1,29 +1,24 @@
-const mongoose =require('mongoose')
+const mongoose = require('mongoose');
 
-var messagesShema=new mongoose.Shema({
-    conversationId:{
-        type:mongoose.Types.ObjectId,
-        require:true
+var messagesSchema = new mongoose.Schema({
+    conversationId: {
+        type: mongoose.Types.ObjectId,
+        required: true
     },
-    sender:{
-        type:mongoose.Types.ObjectId,
-        ref:'Users',
-        require:true
-
+    sender: {
+        type: mongoose.Types.ObjectId,
+        ref: 'Users',
+        required: true
     },
-    message:{
-        type:String,
-        require:true
+    message: {
+        type: String,
+        required: true
     },
-    isRead:{
-        type:Boolean,
-        require:true,
-        default:false
+    isRead: {
+        type: Boolean,
+        required: true,
+        default: false
     }
+});
 
-})
-
-const Message = mongoose.model('Messages', messagesShema);
-
-
-module.exports=Message
+module.exports = mongoose.model('Messages', messagesSchema);

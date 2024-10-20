@@ -51,6 +51,9 @@ const paths={
         DELETE:"/products/:id",
         UPDATE:"/products/:id",
         GETBYSLUG:"/products/slug/:slug"
+    },
+    CONVERSATION:{
+        POST:'/conversations'
     }
     
 }
