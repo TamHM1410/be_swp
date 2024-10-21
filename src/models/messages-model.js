@@ -19,6 +19,11 @@ var messagesSchema = new mongoose.Schema({
         required: true,
         default: false
     }
-});
+},{
+    collection:'Messeages',
+    timestamps:true
+}
+
+);
 
 module.exports = mongoose.model('Messages', messagesSchema);

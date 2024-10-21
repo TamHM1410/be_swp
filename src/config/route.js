@@ -53,7 +53,10 @@ const paths={
         GETBYSLUG:"/products/slug/:slug"
     },
     CONVERSATION:{
-        POST:'/conversations'
+        POST:'/conversations',
+        GETUSERCONVERSATION:'/users/conversations',
+        GETMESSAGEINCONVERSATION:'/users/conversations/messages'
+
     }
     
 }

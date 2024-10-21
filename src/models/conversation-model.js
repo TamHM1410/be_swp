@@ -9,7 +9,7 @@ const conversationSchema =new mongoose.Schema({
         type:mongoose.Types.ObjectId,
         ref:'Messages'
     }
-},{ timestamps: true })
+},{ timestamps: true ,collection:'Conversations'})
 
 
 const Conversation=mongoose.model('Conversations',conversationSchema)

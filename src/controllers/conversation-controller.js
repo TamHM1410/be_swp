@@ -6,8 +6,24 @@ class ConversationController {
     let userIdA = req.body.sender;
     let userIdB = req.body.receiver;
     new Success(
-      'success',
+      "success",
       await conversation_service.createdConversation({ userIdA, userIdB })
+    ).send(res);
+  });
+  static findListConversationById = asyncHandler(async (req, res) => {
+    let userId = req.body.userId;
+
+    new Success(
+      "Success",
+      await conversation_service.getAllContact(userId)
+    ).send(res);
+  });
+  static getMessageInconversation = asyncHandler(async (req, res) => {
+    let conversationId = req.body.conversationId;
+
+    new Success(
+      "success",
+      await conversation_service.getMessByConversation(conversationId)
     ).send(res);
   });
 }

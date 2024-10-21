@@ -52,6 +52,7 @@ var userSchema = new mongoose.Schema({
   }
 },{
   timestamps:true,
+  collection:'Users'
   
 });
 
