@@ -7,6 +7,7 @@ const instance = require("./config/instance");
 const error_handler = require("./middlewares/Errorhandle");
 const cors = require("cors");
 const { method } = require("lodash");
+const { psqlConnection}=require('../src/config/psqlconnection')
 require("dotenv").config();
 
 
@@ -46,7 +47,7 @@ webApi(app);
 
 ///db
 instance();
-
+psqlConnection()
 // Error handling middleware
 app.use(error_handler);
 
