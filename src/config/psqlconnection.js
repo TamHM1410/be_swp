@@ -1,13 +1,13 @@
 const { Client } = require('pg');
-
+const client = new Client({
+  host: '34.81.244.146',
+  port: 5432,
+  user: 'root',
+  password: 'exevipvl',
+  database: 'exe201',
+});
 const psqlConnection = async () => {
-  const client = new Client({
-    host: '34.81.244.146',
-    port: 5432,
-    user: 'root',
-    password: 'exevipvl',
-    database: 'EXE201',
-  });
+  
 
   try {
     await client.connect();
@@ -19,4 +19,4 @@ const psqlConnection = async () => {
   return client;
 };
 
-module.exports = { psqlConnection };
+module.exports = { psqlConnection,client  };

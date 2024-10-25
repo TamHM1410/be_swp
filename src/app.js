@@ -37,6 +37,8 @@ app.use(
       "https://booking-tour-zeta.vercel.app",
       "https://localhost:3000",
       "https://hella-booking-ant.vercel.app",
+      "http://localhost:8081",
+
     ],
     credentials: true,
   })
@@ -47,7 +49,7 @@ webApi(app);
 
 ///db
 instance();
-psqlConnection()
+// psqlConnection()
 // Error handling middleware
 app.use(error_handler);
 
