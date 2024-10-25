@@ -21,7 +21,7 @@ const io = require('socket.io')(httpServer, {
    method:['GET','POST']
 },
 });
-io.on("connection",socketController);
+io.on("connection",(socket)=>socketController(socket,io));
 
 
 

@@ -8,6 +8,7 @@ const subCategory=require('./sub-category-routes')
 const inventory=require('./inventory-routes')
 const products=require('./products-routes')
 const conversationRouter=require('./conversation-routes')
+const psqlRoute=require('./pqsl-route')
 
 var predictVersionUrl="/api/v1"
 const webApi = (app) => {
@@ -21,6 +22,8 @@ const webApi = (app) => {
   app.use(predictVersionUrl,inventory)
   app.use(predictVersionUrl,products)
   app.use(predictVersionUrl,conversationRouter)
+  app.use(predictVersionUrl,psqlRoute)
+
 
 
 
