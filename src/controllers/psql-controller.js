@@ -4,6 +4,7 @@ const asyncHandler = require("express-async-handler");
 class PsqlController {
   static getListMsg = asyncHandler(async (req, res) => {
     psqlConnection();
+    console.log('res.',req.body)
     let userId = req.body.userId;
     let result = await client.query(`select*from groups where host_id = $1`, [
       userId,
@@ -37,11 +38,11 @@ VALUES ($1,$2)`,
     let receiver_id = req.body.receiver_id;
     let message = req.body.message;
     let message_type = req.body.message_type;
-    let group_id = req.body.group_id;
+  
     let result = await client.query(
-      `INSERT INTO messages (sender_id,receiver_id,message,message_type,group_id)
+      `INSERT INTO messages (sender_id,receiver_id,message,message_type)
 VALUES ($1,$2,$3,$4,$5)`,
-      [sender_id, receiver_id, message, message_type, group_id]
+      [sender_id, receiver_id, message, message_type]
     );
 
     return res.json({
@@ -53,7 +54,7 @@ VALUES ($1,$2,$3,$4,$5)`,
     psqlConnection();
     let sender_id=req.body.sender_id
     let receiver_id=req.body.receiver_id
-    let result=await client.query(`SELECT m.id,    m.message ,u.url_avatar ,u.username,u.id FROM messages m  
+    let result=await client.query(`SELECT m.id, m.message ,u.url_avatar ,u.username,u.id FROM messages m  
         JOIN users u ON (m.receiver_id = u.id OR m.sender_id = u.id) WHERE (m.sender_id = $1 AND m.receiver_id = $2) 
         OR (m.sender_id = $2 AND m.receiver_id = $1)
    ORDER BY m.created_at ASC `,[sender_id,receiver_id])
@@ -66,13 +67,13 @@ VALUES ($1,$2,$3,$4,$5)`,
   })
   static getMsgByUserId = asyncHandler(
     asyncHandler(async (req, res) => {
-      console.log(req.body)
+      console.log('body c,liebnt')
       psqlConnection();
 
       let sender_id = req.body.user_id;
 
 
-    let result = await client.query(
+      let result = await client.query(
         `SELECT messages.receiver_id, messages.sender_id, 
                 MAX(messages.message) AS message, 
                 users.username, 
@@ -84,6 +85,8 @@ VALUES ($1,$2,$3,$4,$5)`,
         [sender_id]
       );
       
+
+      console.log(result.rows,'res')
 
       return res.json({
         status: 200,        

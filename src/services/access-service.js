@@ -45,13 +45,7 @@ class Access {
     return await checkPassword(req.body?.password,user?.password) === true
     ? new Success("ok", await createToken({ user })).send(res)
     : new ConflictRequestError("Wrong password").send(res);
-    // let checkpass = bcrypt.compareSync(req.body?.password, user?.password);
-    // // const token = await createToken({ findUser });
-    // // console.log(token);
-
-    // return checkpass === true
-    //   ? new Success("login success", await createToken({ user })).send(res)
-    //   : new ConflictRequestError("Wrong password").send(res);
+   
   });
 }
 
