@@ -46,8 +46,12 @@ const socketController = (socket, io) => {
   });
   socket.on("send_msg",async (data)=>{
     const {sender_id, receiver_id, message, message_type}=data
+    console.log(data,'data')
     let newMess =await psqlService.createMsg(sender_id, receiver_id, message, message_type)
-    // console.log('new')
+    let detail_msg = await psqlService.getDetailMsg(sender_id, receiver_id);
+    io.to(sender_id).emit("detail_message", detail_msg);
+    io.to(receiver_id).emit("detail_message", detail_msg);
+
     io.to(sender_id).emit("new_mess", newMess);
 
 

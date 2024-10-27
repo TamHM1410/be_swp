@@ -41,7 +41,7 @@ VALUES ($1,$2)`,
   
     let result = await client.query(
       `INSERT INTO messages (sender_id,receiver_id,message,message_type)
-VALUES ($1,$2,$3,$4,$5)`,
+VALUES ($1,$2,$3,$4)`,
       [sender_id, receiver_id, message, message_type]
     );
 
@@ -79,14 +79,24 @@ VALUES ($1,$2,$3,$4,$5)`,
                 users.username, 
                 users.url_avatar 
          FROM messages 
-         JOIN users ON messages.receiver_id = users.id 
+         JOIN users ON messages.receiver_id = users.id  or messages.sender_id=users.id
          WHERE receiver_id = $1 
          GROUP BY messages.receiver_id, messages.sender_id, users.username, users.url_avatar`,
         [sender_id]
       );
       
 
-      console.log(result.rows,'res')
+      if(result.rows&&Array.isArray(result.rows)){
+        const uniqueData = result.rows.filter((item, index, self) =>
+          index === self.findIndex((t) => t.username === item.username)
+      );
+      return  res.json({
+        status: 200,        
+        msg: "success",
+        result: uniqueData,
+      });
+
+      }
 
       return res.json({
         status: 200,        
